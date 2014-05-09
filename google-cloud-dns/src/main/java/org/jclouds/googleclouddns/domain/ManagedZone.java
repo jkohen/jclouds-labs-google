@@ -104,6 +104,7 @@ public class ManagedZone extends Resource {
    /**
     * {@inheritDoc}
     */
+   @Override
    protected Objects.ToStringHelper string() {
       return super.string()
               .add("id", getId())
@@ -126,6 +127,7 @@ public class ManagedZone extends Resource {
       return new Builder();
    }
 
+   @Override
    public Builder toBuilder() {
       return new Builder().fromManagedZone(this);
    }

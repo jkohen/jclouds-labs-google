@@ -36,7 +36,7 @@ import com.google.common.collect.Iterables;
  * @author Maciek Weksej
  */
 @Beta
-public class Resource {
+public abstract class Resource {
 
    public enum Kind {
       CHANGE,
@@ -170,10 +170,6 @@ public class Resource {
       protected T uniqueStringId(String uniqueStringId) {
          this.uniqueStringId = uniqueStringId;
          return self();
-      }
-
-      public Resource build() {
-         return new Resource(kind, uniqueNumberId, uniqueStringId);
       }
 
       public T fromResource(Resource in) {

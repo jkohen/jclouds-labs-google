@@ -36,6 +36,36 @@ public class ListOptions extends BaseHttpRequestOptions {
       return this;
    }
 
+   public Integer getMaxResults() {
+      String maxresults = getFirstQueryOrNull("maxresults");
+      return (maxresults != null) ? Integer.valueOf(maxresults) : null;
+   }
+
+   /**
+    * Restricts the list to return only records with this fully qualified domain name.
+    */
+   public ListOptions name(String name) {
+      this.queryParameters.put("name", checkNotNull(name, "name") + "");
+      return this;
+   }
+
+   public String getName() {
+      return getFirstQueryOrNull("name");
+   }
+   
+   /**
+    * Optional. Restricts the list to return only records of this type. If present, the name parameter must also be present.
+    * See the <a href="https://developers.google.com/cloud-dns/what-is-cloud-dns#supported_record_types">full list of supported types</a>.
+    */
+   public ListOptions typeWithName(String type, String name) {
+      this.queryParameters.put("type", checkNotNull(type, "type") + "");
+      return name(name);
+   }
+
+   public String getType() {
+      return getFirstQueryOrNull("type");
+   }
+   
    public static class Builder {
 
       /**

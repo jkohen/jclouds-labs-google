@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Represents the ResourceRecordSet Cloud DNS resource.
  *
- * @author jkohen
+ * @author Javier Kohen
  * @see <a href="https://developers.google.com/cloud-dns/api/v1beta1/resourceRecordSets"/>
  */
 public class ResourceRecordSet extends Resource {

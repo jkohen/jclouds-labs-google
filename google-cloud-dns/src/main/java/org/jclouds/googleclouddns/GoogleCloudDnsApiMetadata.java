@@ -81,7 +81,7 @@ public class GoogleCloudDnsApiMetadata extends BaseHttpApiMetadata<GoogleCloudDn
                  .defaultProperties(GoogleCloudDnsApiMetadata.defaultProperties())
                  .view(typeToken(ComputeServiceContext.class))
                  .defaultModules(ImmutableSet.<Class<? extends Module>>builder()
-                     // TODO(jkohen,mwek): GCE use the following, we might need them.
+                     // TODO(Javier Kohen,mwek): GCE use the following, we might need them.
 //                         .add(GoogleCloudDnsHttpApiModule.class)
 //                         .add(GoogleCloudDnsParserModule.class)
 //                         .add(OAuthAuthenticationModule.class)

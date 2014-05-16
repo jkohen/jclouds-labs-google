@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Represents the Change Cloud DNS resource.
  *
- * @author jkohen
+ * @author Javier Kohen
  * @see <a href="https://developers.google.com/cloud-dns/api/v1beta1/changes"/>
  */
 public class Change extends Resource {

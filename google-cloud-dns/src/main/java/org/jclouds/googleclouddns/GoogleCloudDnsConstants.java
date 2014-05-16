@@ -23,7 +23,7 @@ import org.jclouds.domain.LocationScope;
 import com.google.common.annotations.Beta;
 
 /**
- * TODO(jkohen,mwek): Remove constants that aren't needed by DNS.
+ * TODO(Javier Kohen,mwek): Remove constants that aren't needed by DNS.
  * 
  * @author Javier Kohen
  */

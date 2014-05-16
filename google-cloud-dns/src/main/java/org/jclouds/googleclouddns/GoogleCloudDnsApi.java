@@ -2,6 +2,7 @@ package org.jclouds.googleclouddns;
 
 import com.google.common.annotations.Beta;
 
+import org.jclouds.googleclouddns.features.ChangeApi;
 import org.jclouds.googleclouddns.features.ResourceRecordSetApi;
 import org.jclouds.rest.annotations.Delegate;
 
@@ -28,4 +29,12 @@ public interface GoogleCloudDnsApi extends Closeable {
    @Path("/projects/{project}")
    ResourceRecordSetApi getResourceRecordSetApiForProject(@PathParam("project") String projectName);
 
+   /**
+    * Provides access to Change features
+    *
+    * @param projectName the name of the project
+    */
+   @Delegate
+   @Path("/projects/{project}")
+   ChangeApi getChangeApiForProject(@PathParam("project") String projectName);
 }

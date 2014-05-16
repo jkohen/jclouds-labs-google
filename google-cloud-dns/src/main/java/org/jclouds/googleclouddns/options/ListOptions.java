@@ -22,11 +22,37 @@ import org.jclouds.http.options.BaseHttpRequestOptions;
 
 /**
  * Allows to optionally specify max results and other optional parameters for paginated list REST methods.
+ * 
+ * <p>Not all APIs support all list options. Refer to the API documentation for details.</p>
  *
  * @author Javier Kohen
  */
 public class ListOptions extends BaseHttpRequestOptions {
 
+   enum SortOrder {
+      ASCENDING("ascending"),
+      DESCENDING("descending");
+
+      private String value;
+
+      private SortOrder(String value) {
+         this.value = value;
+      }
+      
+      public String getValue() {
+         return value;
+      }
+      static SortOrder fromString(String value) throws IllegalArgumentException {
+         if (ASCENDING.getValue().equals(value)) {
+            return ASCENDING;
+         } else if (DESCENDING.getValue().equals(value)) {
+            return DESCENDING;
+         } else {
+            throw new IllegalArgumentException("Unknown sort order: " + value);
+         }
+      }
+   }
+   
    /**
     * Optional. Sets Maximum count of results to be returned. Maximum and default value is 100. Acceptable items are 0 to
     * 100, inclusive. (Default: 100)
@@ -65,7 +91,23 @@ public class ListOptions extends BaseHttpRequestOptions {
    public String getType() {
       return getFirstQueryOrNull("type");
    }
-   
+
+   /**
+    * Sorting order direction. The default is SortOrder.DESCENDING.
+    */
+   public ListOptions sortOrder(SortOrder sortOrder) {
+      this.queryParameters.put("sortOrder", checkNotNull(sortOrder, "sortOrder").getValue() + "");
+      return this;
+   }
+
+   public SortOrder getSortOrder() {
+      try {
+         return SortOrder.fromString(getFirstQueryOrNull("sortOrder"));
+      } catch (IllegalArgumentException e) {
+         return null;
+      }
+   }
+
    public static class Builder {
 
       /**

@@ -30,6 +30,8 @@ import com.google.inject.Module;
 
 import org.jclouds.apis.ApiMetadata;
 import org.jclouds.compute.ComputeServiceContext;
+import org.jclouds.googleclouddns.config.GoogleCloudDnsParserModule;
+import org.jclouds.oauth.v2.config.OAuthAuthenticationModule;
 import org.jclouds.rest.internal.BaseHttpApiMetadata;
 
 import java.net.URI;
@@ -81,10 +83,10 @@ public class GoogleCloudDnsApiMetadata extends BaseHttpApiMetadata<GoogleCloudDn
                  .defaultProperties(GoogleCloudDnsApiMetadata.defaultProperties())
                  .view(typeToken(ComputeServiceContext.class))
                  .defaultModules(ImmutableSet.<Class<? extends Module>>builder()
-                     // TODO(Javier Kohen,mwek): GCE use the following, we might need them.
+                     // TODO(jkohen,mwek): GCE uses the following, we might need them.
 //                         .add(GoogleCloudDnsHttpApiModule.class)
-//                         .add(GoogleCloudDnsParserModule.class)
-//                         .add(OAuthAuthenticationModule.class)
+                         .add(GoogleCloudDnsParserModule.class)
+                         .add(OAuthAuthenticationModule.class)
 //                         .add(OAuthModuleWithoutTypeAdapters.class)
 //                         .add(GoogleCloudDnsServiceContextModule.class)
                          .build());

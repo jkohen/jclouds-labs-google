@@ -30,7 +30,7 @@ import com.google.common.base.Objects;
 /**
  * Represents a project resource.
  * 
- * @author mwek
+ * @author Maciek Weksej
  * @see <a href="https://developers.google.com/cloud-dns/api/v1beta1/projects"/>
  */
 @Beta

@@ -3,6 +3,8 @@ package org.jclouds.googleclouddns;
 import com.google.common.annotations.Beta;
 
 import org.jclouds.googleclouddns.features.ChangeApi;
+import org.jclouds.googleclouddns.features.ManagedZoneApi;
+import org.jclouds.googleclouddns.features.ProjectApi;
 import org.jclouds.googleclouddns.features.ResourceRecordSetApi;
 import org.jclouds.rest.annotations.Delegate;
 
@@ -21,15 +23,6 @@ import javax.ws.rs.PathParam;
 @Beta
 public interface GoogleCloudDnsApi extends Closeable {
    /**
-    * Provides access to ResourceRecordSet features
-    *
-    * @param projectName the name of the project
-    */
-   @Delegate
-   @Path("/projects/{project}")
-   ResourceRecordSetApi getResourceRecordSetApiForProject(@PathParam("project") String projectName);
-
-   /**
     * Provides access to Change features
     *
     * @param projectName the name of the project
@@ -37,4 +30,28 @@ public interface GoogleCloudDnsApi extends Closeable {
    @Delegate
    @Path("/projects/{project}")
    ChangeApi getChangeApiForProject(@PathParam("project") String projectName);
+   
+   /**
+    * Provides access to ManagedZone features
+    *
+    * @param projectName the name of the project
+    */
+   @Delegate
+   @Path("/projects/{project}")
+   ManagedZoneApi getManagedZoneApiForProject(@PathParam("project") String projectName);
+   
+   /**
+    * Provides access to Project features
+    */
+   @Delegate
+   ProjectApi getProjectApi();
+   
+   /**
+    * Provides access to ResourceRecordSet features
+    *
+    * @param projectName the name of the project
+    */
+   @Delegate
+   @Path("/projects/{project}")
+   ResourceRecordSetApi getResourceRecordSetApiForProject(@PathParam("project") String projectName);
 }
